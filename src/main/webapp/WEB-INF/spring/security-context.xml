@@ -29,7 +29,7 @@
 		<!-- 로그아웃 -->
 		<security:logout logout-url="/customLogout" invalidate-session="true"/>
 	</security:http>
-
+ 
 	<!-- 	인증 매니저  -->
 	<security:authentication-manager>
 		<security:authentication-provider>
