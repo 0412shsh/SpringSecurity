@@ -26,4 +26,9 @@ public class CommonController {
 	public void myLoginGET() {
 		log.info("myLoginGET() 호출");
 	}
+	
+	@GetMapping("/customLogout")
+	public void logoutGET() {
+		log.info("logoutGET() 호출");
+	}
 }

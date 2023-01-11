@@ -25,6 +25,9 @@
 		
 <!-- 		<security:access-denied-handler error-page="/accessError"/>	 -->
 		<security:access-denied-handler ref="customAccessDenied"/>	
+		
+		<!-- 로그아웃 -->
+		<security:logout logout-url="/customLogout" invalidate-session="true"/>
 	</security:http>
 
 	<!-- 	인증 매니저  -->
