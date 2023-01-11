@@ -21,4 +21,9 @@ public class CommonController {
 		model.addAttribute("msg", "Access Denied");
 		model.addAttribute("auth", auth);
 	}
+	
+	@GetMapping("/customLogin")
+	public void myLoginGET() {
+		log.info("myLoginGET() 호출");
+	}
 }
