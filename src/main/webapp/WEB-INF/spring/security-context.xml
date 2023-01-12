@@ -8,6 +8,9 @@
 		  class="com.ha.security.CustomAccessDeniedHandler"></bean>
 	<bean id="customLoginSuccess" 
 		  class="com.ha.security.CustomLoginSuccessHandler"></bean>
+	 <bean id="bcryptPasswordEncoder" 
+	    class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"
+	 />	  
 
 	<security:http>
 		<security:intercept-url pattern="/sample/all" 
@@ -33,6 +36,9 @@
 	<!-- 	인증 매니저  -->
 	<security:authentication-manager>
 		<security:authentication-provider>
+		
+			<security:password-encoder ref="bcryptPasswordEncoder"/>
+		
 			<security:user-service>
 				
 				<security:user name="seo" password="{noop}1234" authorities="ROLE_MEMBER"/>
