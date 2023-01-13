@@ -15,8 +15,10 @@
 	<security:http>
 		<security:intercept-url pattern="/sample/all" 
 								access="permitAll"/>
+<!-- 		<security:intercept-url pattern="/sample/member"  -->
+<!-- 								access="hasRole('ROLE_MEMBER')"/> -->
 		<security:intercept-url pattern="/sample/member" 
-								access="hasRole('ROLE_MEMBER')"/>
+								access="hasRole('ROLE_MANAGER')"/>
 		<security:intercept-url pattern="/sample/admin" 
 								access="hasRole('ROLE_ADMIN')"/>
 								
@@ -36,15 +38,20 @@
 	<!-- 	인증 매니저  -->
 	<security:authentication-manager>
 		<security:authentication-provider>
+			<!-- 사용자정보 체크하는 디비연결정보 -->
+			<security:jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select userid,userpw,enabled from tbl_member where userid=?"
+				authorities-by-username-query="select userid,auth from tbl_member_auth where userid=?"
+			/>
 		
 			<security:password-encoder ref="bcryptPasswordEncoder"/>
 		
-			<security:user-service>
+<!-- 			<security:user-service> -->
 				
-				<security:user name="seo" password="{noop}1234" authorities="ROLE_MEMBER"/>
-				<security:user name="admin" password="{noop}1234" authorities="ROLE_MEMBER,ROLE_ADMIN"/>
+<!-- 				<security:user name="seo" password="{noop}1234" authorities="ROLE_MEMBER"/> -->
+<!-- 				<security:user name="admin" password="{noop}1234" authorities="ROLE_MEMBER,ROLE_ADMIN"/> -->
 				
-			</security:user-service>
+<!-- 			</security:user-service> -->
 		</security:authentication-provider>
 	</security:authentication-manager>
 	
